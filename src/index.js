@@ -1,5 +1,5 @@
 import './index.css';
-import { createInitialView } from './modules/renderer.js';
+import { initalize } from './modules/renderer.js';
 
-createInitialView();
+initalize();
 
