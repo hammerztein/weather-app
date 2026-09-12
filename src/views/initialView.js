@@ -1,37 +1,8 @@
 import { createDOMElement } from '../modules/domUtils.js';
+import { createSearchForm } from '../modules/searchForm.js';
 
 const createInitialMainContainer = () => {
-	const labelImage = createDOMElement({
-		element: 'span',
-		textContent: 'search',
-		attributes: [{ class: 'material-symbols-outlined' }],
-	});
-	const inputLabel = createDOMElement({
-		element: 'label',
-		attributes: [
-			{
-				for: 'city',
-			},
-		],
-		children: [labelImage],
-	});
-	const input = createDOMElement({
-		element: 'input',
-		attributes: [
-			{
-				type: 'text',
-				name: 'city',
-				id: 'city',
-				required: true,
-				placeholder: 'Search for a city (e.g Tokyo, London, Berlin)',
-			},
-		],
-	});
-	const form = createDOMElement({
-		element: 'form',
-		attributes: [{ class: 'search-form' }],
-		children: [inputLabel, input],
-	});
+	const searchForm = createSearchForm('initial');
 	const paragraph = createDOMElement({
 		element: 'p',
 		textContent:
@@ -45,9 +16,8 @@ const createInitialMainContainer = () => {
 	const main = createDOMElement({
 		element: 'main',
 		attributes: [{ class: 'main' }],
-		children: [heading, paragraph, form],
+		children: [heading, paragraph, searchForm],
 	});
-	inputLabel.append(labelImage);
 	return main;
 };
 

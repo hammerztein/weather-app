@@ -30,6 +30,13 @@ input {
 	outline: none;
 }
 
+button {
+	outline: none;
+	border: none;
+	cursor: pointer;
+	background: none;
+}
+
 li {
 	list-style-type: none;
 }
@@ -84,12 +91,11 @@ body {
 .search-form {
 	display: flex;
 	background-color: var(--form-bg);
-	padding: var(--spacing-m);
+	padding: var(--spacing-s) var(--spacing-m);
 	gap: var(--spacing-m);
 	border-radius: var(--border-radius-l);
 	border: var(--border-medium);
 	box-shadow: 0 1px 2px #00000010;
-	padding-right: calc(2 * var(--spacing-m));
 	transition: var(--transition);
 
 	& input {
@@ -106,6 +112,20 @@ body {
 	&:focus-within {
 		background-color: #ffffff;
 		border: var(--border-main);
+	}
+
+	& .search-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: calc(var(--spacing-s) / 2);
+		transition: var(--transition);
+		border-radius: var(--border-radius-l);
+		
+		&:hover {
+			background-color: var(--main-bg);
+		}
+		
 	}
 }
 
