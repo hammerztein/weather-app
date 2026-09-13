@@ -44,6 +44,7 @@ li {
 a {
 	text-decoration: none;
 	color: inherit;
+	cursor: pointer;
 	font: inherit;
 	transition: var(--transition);
 	border-bottom: 1px solid transparent;
@@ -94,8 +95,21 @@ body {
 	gap: var(--spacing-m);
 	border-radius: var(--border-radius-l);
 	border: var(--border-medium);
-	box-shadow: 0 1px 2px #00000010;
 	transition: var(--transition);
+
+	&.initial {
+		box-shadow: 0 1px 2px #00000010;
+	}
+
+	&.weather-data {
+		font-size: 14px;
+		padding: calc((var(--spacing-s) /2)) var(--spacing-s);
+		width: min(400px, 50%);
+
+		& span {
+			font-size: 20px;
+		}
+	}
 
 	& input {
 		flex: 1;
@@ -105,7 +119,11 @@ body {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	& span {
 		color: var(--text-faded-clr);
+		transition: var(--transition);
 	}
 
 	&:focus-within {
@@ -123,6 +141,10 @@ body {
 		
 		&:hover {
 			background-color: var(--main-bg);
+
+			& span {
+				color: var(--text-primary-clr);
+			}
 		}
 		
 	}
@@ -137,5 +159,32 @@ body {
 	& .links {
 		display: flex;
 		gap: var(--spacing-m);
+	}
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	padding: var(--spacing-s) var(--spacing-m);
+	gap: var(--spacing-l);
+	border-bottom: var(--border-medium);
+
+	& .brand {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-s);
+		color: var(--text-primary-clr);
+	}
+
+	& .header-icon {
+		border-radius: var(--border-radius-l);
+		background-color: var(--text-primary-clr);
+		padding: calc(var(--spacing-s) / 1.5);
+		color: var(--main-bg);
+	}
+
+	& h1 {
+		font-weight: bold;
+		font-size: calc(var(--font-size-default) * 1.25);
 	}
 }
