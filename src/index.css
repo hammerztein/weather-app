@@ -74,8 +74,13 @@ body {
 	gap: var(--spacing-s);
 	text-align: center;
 
-	& > *:last-child {
-		margin-top: var(--spacing-m);
+	&.weather-data {
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		gap: var(--spacing-l);
+		padding-inline: 10%;
+		margin-block: var(--spacing-l);
 	}
 
 	& h1 {
@@ -186,5 +191,39 @@ body {
 	& h1 {
 		font-weight: bold;
 		font-size: calc(var(--font-size-default) * 1.25);
+	}
+}
+
+.temperature-card {
+	background-color: var(--form-bg);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--spacing-l);
+	border-radius: 40px;
+
+	& .temperature {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-s);
+		font-size: 32px;
+
+		& span {
+			font-size: 48px;
+		}
+
+		& h2::after {
+			content: "°";
+		}
+	}
+
+	& .location .row {
+		display: flex;
+		gap: var(--spacing-s);
+		justify-content: center;
+
+		&:last-child {
+			margin-top: var(--spacing-s);
+		}
 	}
 }
