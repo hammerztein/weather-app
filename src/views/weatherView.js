@@ -1,7 +1,7 @@
-import { createDOMElement } from '../modules/domUtils.js';
-import { createSearchForm } from '../modules/searchForm.js';
-import { createFooter } from '../modules/footer.js';
-import { replaceDashWithUnderscore } from '../modules/utils.js';
+import { createDOMElement } from '../utils/domUtils.js';
+import { createSearchForm } from '../components/searchForm.js';
+import { createFooter } from '../components/footer.js';
+import { replaceDashWithUnderscore } from '../utils/utils.js';
 
 const createHeader = () => {
 	const headerIcon = createDOMElement({

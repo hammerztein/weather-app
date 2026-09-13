@@ -1,6 +1,6 @@
-import { createDOMElement } from '../modules/domUtils.js';
-import { createSearchForm } from '../modules/searchForm.js';
-import { createFooter } from '../modules/footer.js';
+import { createDOMElement } from '../utils/domUtils.js';
+import { createSearchForm } from '../components/searchForm.js';
+import { createFooter } from '../components/footer.js';
 
 const createInitialMainContainer = () => {
 	const searchForm = createSearchForm('initial');
