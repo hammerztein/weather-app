@@ -22,3 +22,7 @@ export const createDOMElement = (options) => {
 	return element;
 };
 
+export const cleanContainer = (container) => {
+	container.innerHTML = '';
+};
+
