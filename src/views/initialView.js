@@ -22,7 +22,8 @@ const createInitialMainContainer = () => {
 	return main;
 };
 
-export const createInitialView = (root) => {
+export const createInitialView = () => {
+	const root = document.getElementById('root');
 	const main = createInitialMainContainer();
 	const footer = createFooter();
 
