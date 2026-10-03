@@ -1,7 +1,7 @@
-import { createDOMElement } from '../utils/domUtils.js';
+import { createDOMElement, cleanContainer } from '../utils/domUtils.js';
 import { createSearchForm } from '../components/searchForm.js';
 import { createFooter } from '../components/footer.js';
-import { replaceDashWithUnderscore } from '../utils/utils.js';
+import { replaceDashWithUnderscore, capitalizeWord } from '../utils/utils.js';
 
 const createHeader = () => {
 	const headerIcon = createDOMElement({
@@ -64,7 +64,7 @@ const createTemperatureCard = (temperatureData) => {
 
 	const conditionsEl = createDOMElement({
 		element: 'h3',
-		textContent: conditions,
+		textContent: `${conditions} • `,
 	});
 	const location = createDOMElement({ element: 'h3', textContent: address });
 	const tempMax = createDOMElement({
@@ -111,28 +111,24 @@ const createTemperatureCard = (temperatureData) => {
 	return section;
 };
 
-const createMainContainer = () => {
+const createMainContainer = (weatherData) => {
+	const temperatureData = weatherData.days[0];
+	temperatureData.address = capitalizeWord(weatherData.address);
+
 	const main = createDOMElement({
 		element: 'main',
 		attributes: [{ class: 'main weather-data' }],
-		children: [
-			createTemperatureCard({
-				temp: '72',
-				conditions: 'Partyl Cloudy',
-				icon: 'partly-cloudy-day',
-				tempmax: '100',
-				tempmin: '55',
-				address: 'Tallinn',
-			}),
-		],
+		children: [createTemperatureCard(temperatureData)],
 	});
 
 	return main;
 };
 
-export const createWeatherView = (root) => {
+export const createWeatherView = (weatherData) => {
+	const root = document.getElementById('root');
+	cleanContainer(root);
 	const header = createHeader();
-	const main = createMainContainer();
+	const main = createMainContainer(weatherData);
 	const footer = createFooter();
 	root.append(header, main, footer);
 };
