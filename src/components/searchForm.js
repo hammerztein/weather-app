@@ -1,4 +1,5 @@
 import { createDOMElement } from '../utils/domUtils.js';
+import { searchWeatherData } from '../modules/eventHandlers.js';
 
 export const createSearchForm = (className) => {
 	const labelImage = createDOMElement({
@@ -53,6 +54,8 @@ export const createSearchForm = (className) => {
 		attributes: [{ class: `search-form ${className}` }],
 		children: [inputLabel, input, searchBtn],
 	});
+
+	form.addEventListener('submit', searchWeatherData);
 
 	return form;
 };
