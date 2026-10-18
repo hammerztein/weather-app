@@ -79,17 +79,13 @@ body {
 		flex-direction: column;
 		justify-content: start;
 		gap: var(--spacing-l);
-		padding-inline: 10%;
+		padding-inline: 5%;
 		margin-block: var(--spacing-l);
 	}
 
 	& h1 {
 		color: var(--text-primary-clr);
 		font-size: var(--main-heading-size);
-	}
-
-	& p {
-		font-size: var(--font-size-default);
 	}
 }
 
@@ -211,10 +207,6 @@ body {
 		& span {
 			font-size: 48px;
 		}
-
-		& h2::after {
-			content: "°";
-		}
 	}
 
 	& .location .row {
@@ -226,4 +218,47 @@ body {
 			margin-top: var(--spacing-s);
 		}
 	}
+}
+
+.week-forecast {
+	text-align: left;
+
+	& h3 {
+		margin-bottom: var(--spacing-s);
+	}
+}
+
+.forecast-cards {
+	display: flex;
+	gap: var(--spacing-m);
+}
+
+.day-card {
+	flex: 1;
+	background-color: var(--form-bg);
+	padding-block: var(--spacing-m);
+	display: grid;
+	justify-items: center;
+	gap: var(--spacing-s);
+	border-radius: 30px;
+	transition: var(--transition);
+	border: 1px solid transparent;
+	
+	&:hover {
+		transform: translateY(-2px);
+		border: var(--border-medium);
+		box-shadow: 0 2px 4px #55555515;
+	}
+}
+
+.day {
+	font-weight: 600;
+}
+
+.degree::after {
+	content: "°"
+}
+
+.small {
+	font-size: 13px;
 }
