@@ -9,14 +9,19 @@ export const fetchWeatherData = async (location) => {
 		);
 
 		if (!response.ok) {
-			throw new Error(`HTTP Error! Status: ${response.status}`);
+			const errorMessages = {
+				400: 'Please insert a valid city name!',
+				401: 'Please verify the validity of your API key!',
+			};
+
+			throw new Error(`${errorMessages[response.status]}`);
 		}
 
 		const weatherData = await response.json();
 		return weatherData;
 	} catch (error) {
-		console.error('Failed to fetch weather data:', error.message);
-		throw new Error(`Failed to fetch weather data: ${error.message}`);
+		console.error('Failed to fetch weather data - ', error.message);
+		throw new Error(`Failed to fetch weather data - ${error.message}`);
 	}
 };
 
