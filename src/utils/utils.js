@@ -43,3 +43,33 @@ export const convertDate = (dateString) => {
 	return days[weekDay];
 };
 
+export const transformWeatherData = (weatherData) => {
+	const weekData = weatherData.days.slice(0, 7).map((day) => {
+		return {
+			datetime: day.datetime,
+			tempmin: day.tempmin,
+			tempmax: day.tempmax,
+			icon: day.icon,
+		};
+	});
+
+	const tempData = weekData[0];
+	tempData.address = capitalizeWord(weatherData.address);
+	tempData.temp = weatherData.currentConditions.temp;
+
+	const { humidity, uvindex, windspeed, sunrise, sunset } =
+		weatherData.currentConditions;
+
+	return {
+		weekData,
+		tempData,
+		insightData: {
+			humidity,
+			uvindex,
+			windspeed,
+			sunrise,
+			sunset,
+		},
+	};
+};
+
