@@ -1,12 +1,8 @@
 import { createDOMElement, cleanContainer } from '../utils/domUtils.js';
 import { createSearchForm } from '../components/searchForm.js';
 import { createFooter } from '../components/footer.js';
-import {
-	mapWeatherConditionIcons,
-	capitalizeWord,
-	convertDate,
-} from '../utils/utils.js';
-import { data } from '../../data.json';
+import { mapWeatherConditionIcons, convertDate } from '../utils/utils.js';
+import { toggleTempData } from '../modules/eventHandlers.js';
 
 const createHeader = () => {
 	const headerIcon = createDOMElement({
@@ -34,6 +30,19 @@ const createHeader = () => {
 
 	const searchForm = createSearchForm('weather-data');
 
+	const degreeToggle = createDOMElement({
+		element: 'input',
+		attributes: [
+			{
+				type: 'checkbox',
+				name: 'deg-toggle',
+				id: 'deg-toggle',
+			},
+		],
+	});
+
+	degreeToggle.addEventListener('change', toggleTempData);
+
 	// Create input field form
 	const header = createDOMElement({
 		element: 'header',
@@ -42,7 +51,7 @@ const createHeader = () => {
 				class: 'header',
 			},
 		],
-		children: [headerBrand, searchForm],
+		children: [headerBrand, searchForm, degreeToggle],
 	});
 
 	return header;
