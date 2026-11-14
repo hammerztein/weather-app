@@ -220,7 +220,7 @@ body {
 	}
 }
 
-.week-forecast {
+.weather-section {
 	text-align: left;
 
 	& h3 {
@@ -228,15 +228,15 @@ body {
 	}
 }
 
-.forecast-cards {
+.cards {
 	display: flex;
 	gap: var(--spacing-m);
 }
 
-.day-card {
+.card {
 	flex: 1;
 	background-color: var(--form-bg);
-	padding-block: var(--spacing-m);
+	padding: var(--spacing-s) var(--spacing-m);
 	display: grid;
 	justify-items: center;
 	gap: var(--spacing-s);
@@ -249,9 +249,28 @@ body {
 		border: var(--border-medium);
 		box-shadow: 0 2px 4px #55555515;
 	}
+
+	& .card-title {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-s);
+		width: 100%;
+		text-align: left;
+	}
+
+	& .insight-data {
+		width: 75%;
+		text-align: left;
+		font-size: 24px;
+	}
+
+	& .timestamps {
+		display: flex;
+		gap: var(--spacing-s);
+	}
 }
 
-.day {
+.bold {
 	font-weight: 600;
 }
 
