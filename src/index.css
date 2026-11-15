@@ -77,10 +77,8 @@ body {
 	&.weather-data {
 		display: flex;
 		flex-direction: column;
-		justify-content: start;
 		gap: var(--spacing-l);
-		padding-inline: 5%;
-		margin-block: var(--spacing-l);
+		padding-inline: 15%;
 	}
 
 	& h1 {
