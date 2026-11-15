@@ -3,6 +3,7 @@ import { createSearchForm } from '../components/searchForm.js';
 import { createFooter } from '../components/footer.js';
 import { mapWeatherConditionIcons, convertDate } from '../utils/utils.js';
 import { toggleTempData } from '../modules/eventHandlers.js';
+import { state } from '../modules/state.js';
 
 const createHeader = () => {
 	const headerIcon = createDOMElement({
@@ -41,9 +42,10 @@ const createHeader = () => {
 		],
 	});
 
+	degreeToggle.checked = state.temperatureUnit === 'C' ? false : true;
+
 	degreeToggle.addEventListener('change', toggleTempData);
 
-	// Create input field form
 	const header = createDOMElement({
 		element: 'header',
 		attributes: [
@@ -282,13 +284,15 @@ const createDayCard = (dayData) => {
 
 	const tempHigh = createDOMElement({
 		element: 'h4',
-		textContent: dayData.tempmax,
+		textContent:
+			state.temperatureUnit === 'C' ? dayData.tempmaxC : dayData.tempmaxF,
 		attributes: [{ class: 'degree' }],
 	});
 
 	const tempLow = createDOMElement({
 		element: 'p',
-		textContent: dayData.tempmin,
+		textContent:
+			state.temperatureUnit === 'C' ? dayData.tempminC : dayData.tempminF,
 		attributes: [{ class: 'degree small' }],
 	});
 
@@ -333,11 +337,22 @@ const createWeekDayCards = (daysData) => {
 };
 
 const createTemperatureCard = (temperatureData) => {
-	const { temp, conditions, icon, tempmax, tempmin, address } = temperatureData;
+	const {
+		tempC,
+		tempF,
+		conditions,
+		icon,
+		tempmaxC,
+		tempminC,
+		tempmaxF,
+		tempminF,
+		address,
+	} = temperatureData;
 	const temperature = createDOMElement({
 		element: 'h2',
-		textContent: temp,
+		textContent: state.temperatureUnit === 'C' ? tempC : tempF,
 		attributes: [{ class: 'degree' }],
+		tempC,
 	});
 	const conditionsIcon = createDOMElement({
 		element: 'span',
@@ -362,12 +377,12 @@ const createTemperatureCard = (temperatureData) => {
 	const location = createDOMElement({ element: 'h3', textContent: address });
 	const tempMax = createDOMElement({
 		element: 'p',
-		textContent: `High: ${tempmax}`,
+		textContent: `High: ${state.temperatureUnit === 'C' ? tempmaxC : tempmaxF}`,
 		attributes: [{ class: 'degree' }],
 	});
 	const tempMin = createDOMElement({
 		element: 'p',
-		textContent: `Low: ${tempmin}`,
+		textContent: `Low: ${state.temperatureUnit === 'C' ? tempminC : tempminF}`,
 		attributes: [{ class: 'degree' }],
 	});
 
