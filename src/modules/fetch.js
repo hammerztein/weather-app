@@ -10,18 +10,25 @@ export const fetchWeatherData = async (location) => {
 
 		if (!response.ok) {
 			const errorMessages = {
-				400: 'Please insert a valid city name!',
-				401: 'Please verify the validity of your API key!',
+				400: 'Please enter a valid city name.',
+				401: 'Unable to authenticate with the weather service. Please check the API key.',
+				403: 'Access to the weather service is forbidden. Please check your API subscription.',
+				404: 'We couldn’t find that city. Please check the spelling and try again.',
+				408: 'The request timed out. Please try again.',
+				429: 'Too many requests. Please wait a moment before trying again.',
+				500: 'The weather service is experiencing problems. Please try again later.',
 			};
 
-			throw new Error(`${errorMessages[response.status]}`);
+			throw new Error(
+				`${errorMessages[response.status] || 'Something went wrong, please try again'} `,
+			);
 		}
 
 		const weatherData = await response.json();
 		return weatherData;
 	} catch (error) {
-		console.error('Failed to fetch weather data - ', error.message);
-		throw new Error(`Failed to fetch weather data - ${error.message}`);
+		console.error('Failed during data fetching - ', error.message);
+		throw new Error(`Failed during data fetching - ${error.message}`);
 	}
 };
 
