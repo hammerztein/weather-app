@@ -319,10 +319,14 @@ body {
 	font-weight: 600;
 }
 
-.degree::after {
-	content: "°"
-}
-
 .small {
 	font-size: 13px;
+}
+
+.high::before {
+	content: "High: ";
+}
+
+.low::before {
+	content: "Low: ";
 }
