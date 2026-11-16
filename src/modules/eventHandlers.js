@@ -1,5 +1,6 @@
 import { fetchWeatherData } from './fetch.js';
 import { createWeatherView } from '../views/weatherView.js';
+import { updateTemperatures } from './temperature.js';
 import { transformWeatherData } from '../utils/utils.js';
 import { state } from '../modules/state.js';
 
@@ -18,7 +19,6 @@ export const searchWeatherData = async (e) => {
 	} catch (error) {
 		console.error('Error while trying to fetch city data:', error.message);
 		alert(`Error: ${error.message}`);
-		// TODO Render custom view for incorrect user input
 	} finally {
 		e.target.reset();
 	}
@@ -26,6 +26,6 @@ export const searchWeatherData = async (e) => {
 
 export const toggleTempData = (e) => {
 	state.temperatureUnit = e.target.checked ? 'F' : 'C';
-	createWeatherView(state.weatherData);
+	updateTemperatures(state.temperatureUnit);
 };
 
