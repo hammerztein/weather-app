@@ -6,7 +6,7 @@ export const createTemperatureCard = (tempData) => {
 	const html = `
 		<div class="temperature">
 			<span class="material-symbols-outlined">${mapWeatherConditionIcons(tempData.icon)}</span>
-			<h2 class="degree">${tempData.temp}</h2>
+			<h2 class="temp" data-celsius="${tempData.temp}">${tempData.temp}°C</h2>
 		</div>
 		<div class="location">
 			<div class="row">
@@ -14,8 +14,8 @@ export const createTemperatureCard = (tempData) => {
 				<h3>${tempData.address}</h3>
 			</div>
 			<div class="row">
-				<p class="degree">High: ${tempData.tempmax}</p>
-				<p class="degree">Low: ${tempData.tempmin}</p>
+				<p class="temp high" data-celsius="${tempData.tempmax}">${tempData.tempmax}°C</p>
+				<p class="temp low" data-celsius="${tempData.tempmin}">${tempData.tempmin}°C</p>
 			</div>
 		</div>
 	`;

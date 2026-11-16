@@ -5,8 +5,8 @@ const createDayCard = (dayData) => {
 		<article class="card">
 			<p class="bold small">${convertDate(dayData.datetime)}</p>
 			<span class="material-symbols-outlined">${mapWeatherConditionIcons(dayData.icon)}</span>
-			<h4 class="degree">${dayData.tempmax}</h4>
-			<p class="degree small">${dayData.tempmin}</p>
+			<h4 class="temp high" data-celsius="${dayData.tempmax}">${dayData.tempmax}°C</h4>
+			<p class="small temp low" data-celsius="${dayData.tempmin}">${dayData.tempmin}°C</p>
 		</article>
 	`;
 
