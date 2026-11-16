@@ -363,13 +363,13 @@ body {
 	}
 
 	& h2 {
-		margin: 0 0 12px;
+		margin-bottom: 12px;
 		font-size: 20px;
 		color: #812f27;
 	}
 
 	& p {
-		margin: 0 0 24px;
+		margin-bottom: 24px;
 		color: #704139;
 		font-size: 14px;
 		line-height: 1.6;
@@ -378,17 +378,13 @@ body {
 	& button {
 		width: 100%;
 		padding: 12px 20px;
-
 		border: none;
 		border-radius: 999px;
-
 		background: #a64e40;
 		color: #fff8f3;
-
 		font: inherit;
 		font-weight: 600;
 		cursor: pointer;
-
 		transition: background 150ms ease;
 
 		&:hover {
