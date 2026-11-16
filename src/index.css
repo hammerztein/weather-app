@@ -330,3 +330,14 @@ body {
 .low::before {
 	content: "Low: ";
 }
+
+.loader {
+	position: absolute;
+	inset: 0;
+	height: 100dvh;
+	background-color: #000000bb;
+	display: grid;
+	color: #eee;
+	font-size: 48px;
+	place-content: center;
+}
