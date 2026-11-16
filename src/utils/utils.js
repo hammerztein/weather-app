@@ -30,6 +30,10 @@ const isToday = (dateString) => {
 	return false;
 };
 
+export const celsiusToFarenheit = (deg) => {
+	return Math.round((deg * 9) / 5 + 32);
+};
+
 export const convertDate = (dateString) => {
 	const date = Temporal.PlainDate.from(dateString);
 	const today = isToday(date);
@@ -47,8 +51,8 @@ export const transformWeatherData = (weatherData) => {
 	const weekData = weatherData.days.slice(0, 7).map((day) => {
 		return {
 			datetime: day.datetime,
-			tempmin: day.tempmin,
-			tempmax: day.tempmax,
+			tempmin: parseInt(day.tempmin),
+			tempmax: parseInt(day.tempmax),
 			icon: day.icon,
 		};
 	});
@@ -56,6 +60,7 @@ export const transformWeatherData = (weatherData) => {
 	const tempData = weekData[0];
 	tempData.address = capitalizeWord(weatherData.address);
 	tempData.temp = weatherData.currentConditions.temp;
+	tempData.conditions = weatherData.currentConditions.conditions;
 
 	const { humidity, uvindex, windspeed, sunrise, sunset } =
 		weatherData.currentConditions;
