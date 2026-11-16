@@ -5,7 +5,7 @@ const WEATHER_BASE_URL =
 export const fetchWeatherData = async (location) => {
 	try {
 		const response = await fetch(
-			`${WEATHER_BASE_URL}${location}?key=${WEATHER_API_KEY}`,
+			`${WEATHER_BASE_URL}${location}?unitGroup=metric&key=${WEATHER_API_KEY}`,
 		);
 
 		if (!response.ok) {
