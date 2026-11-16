@@ -19,7 +19,7 @@ const createWindCard = (windspeed) => {
 				<span class="material-symbols-outlined">air</span>
 				<p class="small bold">Wind</p>
 			</div>
-			<h4 class="insight-data">${windspeed} m/s</h4>
+			<h4 class="insight-data">${windspeed} km/h</h4>
 		</article>
 	`;
 

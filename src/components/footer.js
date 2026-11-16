@@ -14,7 +14,7 @@ export const createFooter = () => {
 				<ul class="links">
 					<li><a>Privacy Policy</a></li>
 					<li><a>Terms of Service</a></li>
-					<li><a>Data Sources</a></li>
+					<li><a href="https://www.visualcrossing.com/weather-api/">Data Sources</a></li>
 				</ul>
 			</small>
 		</div>
