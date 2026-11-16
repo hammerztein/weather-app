@@ -3,11 +3,10 @@ export const showLoader = () => {
 	loader.className = 'loader';
 	const html = `<p>Loading weather data...</p>`;
 	loader.innerHTML = html;
-	const root = document.getElementById('root');
-	root.append(loader);
+	document.body.append(loader);
 };
 
 export const removeLoader = () => {
-	document.querySelector('.loader').remove();
+	document.querySelector('.loader')?.remove();
 };
 

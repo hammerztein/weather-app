@@ -1,5 +1,6 @@
 import { createSearchForm } from './searchForm.js';
 import { toggleTempData } from '../modules/eventHandlers.js';
+import { state } from '../modules/state.js';
 
 export const createHeader = () => {
 	const header = document.createElement('header');
@@ -15,6 +16,7 @@ export const createHeader = () => {
 
 	header.innerHTML = html;
 	const toggleBtn = header.querySelector('#deg-toggle');
+	toggleBtn.checked = state.temperatureUnit === 'F' ? true : false;
 	toggleBtn.addEventListener('change', toggleTempData);
 	const searchForm = createSearchForm('weather-data');
 	const placeholder = header.querySelector('#search-placeholder');
