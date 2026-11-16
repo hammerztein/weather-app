@@ -1,4 +1,5 @@
 import { createSearchForm } from './searchForm.js';
+import { toggleTempData } from '../modules/eventHandlers.js';
 
 export const createHeader = () => {
 	const header = document.createElement('header');
@@ -13,6 +14,8 @@ export const createHeader = () => {
 	`;
 
 	header.innerHTML = html;
+	const toggleBtn = header.querySelector('#deg-toggle');
+	toggleBtn.addEventListener('change', toggleTempData);
 	const searchForm = createSearchForm('weather-data');
 	const placeholder = header.querySelector('#search-placeholder');
 	header.replaceChild(searchForm, placeholder);
