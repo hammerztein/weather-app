@@ -19,15 +19,14 @@ export const capitalizeWord = (word) => {
 };
 
 const isToday = (dateString) => {
-	const date = Temporal.PlainDate.from(dateString);
-	const today = Temporal.Now.plainDateISO();
-	const isToday = Temporal.PlainDate.compare(date, today);
+	const date = new Date(`${dateString}T00:00:00`);
+	const today = new Date();
 
-	if (isToday === 0) {
-		return true;
-	}
-
-	return false;
+	return (
+		date.getFullYear() === today.getFullYear() &&
+		date.getMonth() === today.getMonth() &&
+		date.getDate() === today.getDate()
+	);
 };
 
 export const celsiusToFarenheit = (deg) => {
@@ -35,16 +34,15 @@ export const celsiusToFarenheit = (deg) => {
 };
 
 export const convertDate = (dateString) => {
-	const date = Temporal.PlainDate.from(dateString);
-	const today = isToday(date);
+	const date = new Date(`${dateString}T00:00:00`);
 
-	if (today) {
+	if (isToday(dateString)) {
 		return 'Today';
 	}
 
-	const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-	const weekDay = date.dayOfWeek - 1;
-	return days[weekDay];
+	const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+	return days[date.getDay()];
 };
 
 export const transformWeatherData = (weatherData) => {
